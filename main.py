@@ -12,8 +12,7 @@ def index():
     except:
         session["user"]=""
         session["access"]=""
-        return render_template("index.html",access=session["access"])
-
+        return render_template("index.html",name="",access=session["access"])
 
 
 from auth.auth import app as auth

@@ -1,4 +1,3 @@
-
 from flask import request,render_template,redirect,url_for,session, flash,Blueprint
 from replit import db
 from datetime import datetime
@@ -49,7 +48,7 @@ def loginPOST():
         if password==db[name]["password"]:
             session["user"]={"name":data["name"],"time":now.strftime("%d%H")}
             session["access"]="True"
-            return redirect(url_for('auth.profile'))
+            return redirect(url_for('index'))
         else:
             flash("wrong username/password")
             return redirect(url_for('auth.login'))

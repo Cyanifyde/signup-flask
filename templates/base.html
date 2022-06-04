@@ -1,57 +1,230 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask Auth Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='a.webp') }}">
+    <meta content="my main site" property="og:description" />
+    <meta content="{{ url_for('static', filename='a.webp') }}" property="og:image"/>
+    <meta content="ent1ty.space" property="og:url" />
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='a.webp') }}"/>
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 </head>
+<div class="sidenav">
+    <div class="links">
+        <a href="{{ url_for('index') }}">
+            Home
+        </a>
+         {% if access=="True" %}
+        <a href="{{ url_for('auth.profile') }}">
+            Profile
+        </a>
+        {% endif %}
+        {% if access=="True" %}
+        <a href="{{ url_for('auth.signout') }}">
+            Signout
+        </a>
+        {% endif %}
+        {% if access!="True" %}
+        <a href="{{ url_for('auth.signup') }}">
+            Signup
+        </a>
+        {% endif %}
+        {% if access!="True" %}
+        <a href="{{ url_for('auth.login') }}">
+            Login
+        </a>
+        {% endif %}
+    </div>
+</div>
 
-<body>
-    <section class="hero is-primary is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a href="{{ url_for('index') }}" class="navbar-item">
-                                Home
-                            </a>
-                             {% if access=="True" %}
-                            <a href="{{ url_for('auth.profile') }}" class="navbar-item">
-                                Profile
-                            </a>
-                            {% endif %}
-                            {% if access=="True" %}
-                            <a href="{{ url_for('auth.signout') }}" class="navbar-item">
-                                Signout
-                            </a>
-                            {% endif %}
-                            {% if access!="True" %}
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                Signup
-                            </a>
-                            {% endif %}
-                            {% if access!="True" %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                                Login
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
 
-        <div class="hero-body">
-            <div class="container has-text-centered">
-               {% block content %}
-               {% endblock %}
-            </div>
-        </div>
-    </section>
-</body>
 
+    
+<section>
+    <div class="subsection">
+       {% block content %}
+       {% endblock %}
+    </div>
+</section>
+    
+
+    
+<footer>
+    
+    @Cyan. All rights reserved.
+
+</footer>
+    
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+    
+body {margin:0;font-family:Arial}
+html {
+  scroll-behavior: smooth;
+    background-color: #A8C69F;
+}
+
+footer{width:100%;padding:10px 0px;text-align: center;color: #818181;}
+.sidenav {
+    height: 100%; 
+    width: 20%; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    display: flex;
+}
+section{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.buttons{
+    display:flex;
+    flex-direction:column;
+}
+.links{
+    text-align: right;
+    margin: auto;
+
+}
+.subsection{
+    background-size: 100%;
+    text-align: center;
+}
+.sidenav a {
+  padding: 20px 8px 20px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #686868;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+a,p,h1,h2{
+    
+   color: #686868
+}
+.boxes{
+    display: grid;
+    margin:3vmin;
+    margin-top: 3vmin;
+    gap: 3vmin;
+    width:58%;
+    grid-template-columns: repeat(3, 1fr);
+}
+.miniboxes{
+    max-width:400px;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    text-align: center;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.button {
+  border-radius: 5px;
+  background-color: #FF495C;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  padding:10px;
+  margin: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.buttonfull {
+  border-radius: 5px;
+  background-color: #FF495C;
+  border: none;
+  color: #FFFFFF;
+    width:100%;
+  text-align: center;
+  padding:10px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+    
+.buttonfull span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonfull span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonfull:hover span {
+  padding-right: 25px;
+}
+
+.buttonfull:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
