@@ -4,6 +4,6 @@
 
 {% block content %}
 <h1 class="title">
-  Welcome, {{ current_user.name }}!
+  Welcome, {{session["user"]["name"]}}!
 </h1>
 {% endblock %}

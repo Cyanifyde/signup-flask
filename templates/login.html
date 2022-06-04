@@ -1,7 +1,6 @@
-<!-- templates/login.html -->
+
 
 {% extends "base.html" %}
-
 {% block content %}
 <div class="column is-4 is-offset-4">
     <h3 class="title">Login</h3>
@@ -16,7 +15,7 @@
         <form method="POST" action="/login">
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
                 </div>
             </div>
 
@@ -24,12 +23,6 @@
                 <div class="control">
                     <input class="input is-large" type="password" name="password" placeholder="Your Password">
                 </div>
-            </div>
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox">
-                    Remember me
-                </label>
             </div>
             <button class="button is-block is-info is-large is-fullwidth">Login</button>
         </form>
